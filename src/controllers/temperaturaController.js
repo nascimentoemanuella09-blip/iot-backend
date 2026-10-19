@@ -4,15 +4,18 @@ const receberTemperatura = (req,res) => {
 
     const {teperatura} = req.body
 
-    const snesor = new Temperatura(temperatura)
+    const resultado = await Temperatura.criar(temperatura)
 
-    console.log(sensor)
-
-    res.json({
-        mensagem:"Tempatura recebida",
-        dados:sensor
-    })
+    res.json(resultado)
+      
 }
+
+const listarTemperaturas = async (req,res) =>{
+    const dados = await Temperatura.listar()
+    res.json(dados)
+}
+
     module.export ={
-        receberTemperatura
+        receberTemperatura,
+        listarTemperaturas
     }

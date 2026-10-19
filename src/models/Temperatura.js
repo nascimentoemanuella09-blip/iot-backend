@@ -1,9 +1,19 @@
-class Temperatura {
-    constructor(temparatura){
+const prisma = requeri("")
 
-        this.temperatura = temperatura
-        this.data = new Date()
+
+class Temperatura {
+    
+    async criar(valor){
+        return await prisma.temperatura.create({
+            data:{
+                valor
+            }
+        })
+    }
+
+    async listar(){
+        return await prisma.temperatura.findMany()
     }
 }
 
-module.exports = Temperatura
+module.exports = new Temperatura()
